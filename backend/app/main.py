@@ -77,16 +77,12 @@ async def health():
 
 
 # API v1 routes
-from app.api.endpoints import auth, users, courses
+from app.api.endpoints import auth, users, courses, tasks
 
 app.include_router(auth.router, prefix=f"{settings.API_V1_PREFIX}/auth", tags=["Authentication"])
 app.include_router(users.router, prefix=f"{settings.API_V1_PREFIX}/users", tags=["Users"])
 app.include_router(courses.router, prefix=f"{settings.API_V1_PREFIX}/courses", tags=["Courses"])
-
-# Additional routes will be added here
-# from app.api.endpoints import tasks, leaderboard
-# app.include_router(tasks.router, prefix=f"{settings.API_V1_PREFIX}/tasks", tags=["tasks"])
-# etc.
+app.include_router(tasks.router, prefix=f"{settings.API_V1_PREFIX}/tasks", tags=["Tasks"])
 
 
 if __name__ == "__main__":
